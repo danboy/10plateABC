@@ -1,0 +1,4 @@
+{
+  "test":         "mongodb://localhost/tenplate-test",
+  "development":  "mongodb://localhost/tenplate"
+}

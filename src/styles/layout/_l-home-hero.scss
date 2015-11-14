@@ -1,0 +1,49 @@
+
+/* ==============================================================
+   Layout - Home Hero
+   ============================================================== */
+
+
+//---------------------------------------------------------------
+// Base
+//---------------------------------------------------------------
+
+
+/*
+Layout - Home Hero
+
+Hero image and text on the homepage
+
+*/
+
+.l-home-hero {
+  background-color: $dark-navy;
+  position: relative;
+  background-size: cover;
+  padding: 35% 8%;
+
+  @include mq(large) {
+    padding: 0;
+    height: 0;
+    padding-top: 50%;
+  }
+
+  .cta {
+    width: 90%;
+
+    @include mq(medium) {
+      width: 70%;
+    }
+
+    @include mq(large) {
+      position: absolute;
+      max-width: 50.5rem;
+      width: 35%;
+      left: 10%;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      height: 20rem;
+    }
+  }
+}

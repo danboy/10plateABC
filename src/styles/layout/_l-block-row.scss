@@ -1,0 +1,90 @@
+
+/* ==============================================================
+   Layout - Block Row
+   ============================================================== */
+
+
+//---------------------------------------------------------------
+// Base
+//---------------------------------------------------------------
+
+
+/*
+Layout - Block Row
+
+A row of equal-height blocks (see /src/styles/layout/_l-block.scss)
+
+.l-block-row--1-1-2                    - Includes 3 blocks in ratios of 1 to 1 to 2
+.l-block-row--3-1                      - Includes 2 blocks in ratios of 3 to 1
+
+*/
+
+.l-block-row {
+  @include layout($content-grid);
+  width: 100%;
+
+  @include mq(large) {
+    display: table;
+    table-layout: fixed;
+  }
+
+  .l-block {
+
+    @include mq(large) {
+      width: span(7);
+      display: table-cell;
+      float: none;
+      vertical-align: top;
+      vertical-align: middle;
+    }
+  }
+}
+
+
+//---------------------------------------------------------------
+// Modifiers
+//---------------------------------------------------------------
+
+
+.l-block-row--1-1-2 {
+  
+  @include mq(large) {
+    
+    .l-block {
+
+      &:nth-child(1) {
+        width: 25%;
+        float: none;
+      }
+
+      &:nth-child(2) {
+        width: 25%;
+        float: none;
+      }
+
+      &:nth-child(3) {
+        width: 50%;
+        float: none;
+      }
+    }
+  }
+}
+
+.l-block-row--3-1 {
+  
+  @include mq(large) {
+    
+    .l-block {
+
+      &:nth-child(1) {
+        width: 75%;
+        float: none;
+      }
+
+      &:nth-child(2) {
+        width: 25%;
+        float: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+/* ==============================================================
+   Underscore
+   ============================================================== */
+
+/*
+Adds an underscore to an element.
+*/
+
+@mixin underscore {
+  content: "";
+  display: block;
+  width: $heading-underscore-width;
+  height: 1px;
+  border-bottom: 1px solid $dark-navy;
+}

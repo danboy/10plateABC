@@ -1,0 +1,9 @@
+// Image Replacement
+// ==============================================================
+
+// ## Image Replacement `@include ir`
+// Hides all text contained within the element
+
+@mixin ir {
+  text-indent: -9999em;
+}

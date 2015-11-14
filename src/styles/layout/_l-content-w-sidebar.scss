@@ -1,0 +1,102 @@
+
+/* ==============================================================
+   Layout - Conent with Sidebar
+   ============================================================== */
+
+
+//---------------------------------------------------------------
+// Base
+//---------------------------------------------------------------
+
+
+/*
+Layout - Conent with Sidebar
+
+The primary wrapper layout used for the side. Includes a sidebar and main content area.
+
+.l-content-w-sidebar--light                - a version with a light background
+
+*/
+
+.l-content-w-sidebar {
+  @include layout($asym-grid);
+  @include container();
+}
+
+//
+// Sub-Modules
+//
+
+.l-content-w-sidebar__sidebar {
+
+  @include mq(large) {
+    @include span(1 first);
+  }
+
+  // Prevent from becoming "sticky" at smaller sizes
+  @include mq($until: large) {
+    position: static !important;
+
+    & + div {
+      display: none !important;
+    }
+  }
+}
+
+.l-content-w-sidebar__content {
+  background-color: $white;
+  
+  @include mq(large) {
+    @include span(1 at 2);
+    position: relative;
+    min-height: 70rem;
+
+    &:after {
+      background-color: $navy;
+      content: "";
+      display: block;
+      width: 25%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -25%;
+      z-index: -9999;
+    }
+  }
+}
+
+.l-content-w-sidebar__inner-content {
+  @include layout($content-grid);
+  @include container();
+
+  .l-content {
+    margin: 0 span(1 wide);
+  }
+}
+
+
+//---------------------------------------------------------------
+// Modifiers
+//---------------------------------------------------------------
+
+
+/* Light
+   ============================================================== */
+
+.l-content-w-sidebar--light {
+
+  .l-content-w-sidebar__content {
+      
+    &:after {
+      background-color: tint($navy, 97);
+    }
+  }
+
+  .l-content-w-sidebar__sidebar {
+      
+    .l-extra-sidebar-content {
+      background-color: tint($navy, 97);
+    }
+  }
+}

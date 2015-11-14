@@ -1,0 +1,53 @@
+/* ==============================================================
+   Webfonts
+   ============================================================== */
+
+
+@font-face {
+  font-family: 'PostGrotesk';
+  src: url('../webfonts/PostGrotesk-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PostGrotesk';
+  src: url('../webfonts/PostGrotesk-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PostGrotesk';
+  src: url('../webfonts/PostGrotesk-BookItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'PostGrotesk';
+  src: url('../webfonts/PostGrotesk-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TiemposHeadlineWeb';
+  src: url('../webfonts/TiemposHeadlineWeb-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TiemposHeadlineWeb';
+  src: url('../webfonts/TiemposHeadlineWeb-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TiemposTextWeb';
+  src: url('../webfonts/TiemposTextWeb-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TiemposTextWeb';
+  src: url('../webfonts/TiemposTextWeb-RegularItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}

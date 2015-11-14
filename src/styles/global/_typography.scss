@@ -1,0 +1,304 @@
+/* ==============================================================
+   Typography
+   ============================================================== */
+
+
+// Variables
+// ==============================================================
+
+$helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$lucida-grande: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
+$georgia: Georgia, Times, "Times New Roman", serif;
+
+
+// Helpers
+// ==============================================================
+
+@mixin type-smoothing-aa {
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin type-smoothing-normal {
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+
+// Fonts
+// ==============================================================
+
+// ## Post Grotesk Book `@include font-post-book`
+
+@mixin font-post-book {
+  font-family: 'PostGrotesk', $helvetica;
+}
+.u-font-post-book {
+  @include font-post-book;
+}
+
+// ## Post Grotesk Book Italic `@include font-post-book-italic`
+
+@mixin font-post-book-italic {
+  @include font-post-book;
+  font-style: italic;
+}
+.u-font-post-book-italic {
+  @include font-post-book-italic;
+}
+
+// ## Post Grotesk Medium `@include font-post-medium`
+
+@mixin font-post-medium {
+  @include font-post-book;
+  font-weight: 500;
+}
+.u-font-post-medium {
+  @include font-post-medium;
+}
+
+// ## Post Grotesk Bold `@include font-post-bold`
+
+@mixin font-post-bold {
+  @include font-post-book;
+  font-weight: 700;
+}
+.u-font-post-bold {
+  @include font-post-bold;
+}
+
+// ## Tiempos Headline Regular `@include font-tiempos-h`
+
+@mixin font-tiempos-h {
+  font-family: 'TiemposHeadlineWeb', $georgia;
+}
+.u-font-tiempos-h {
+  @include font-tiempos-h;
+}
+
+// ## Tiempos Headline Medium `@include font-tiempos-h-medium`
+
+@mixin font-tiempos-h-medium {
+  @include font-tiempos-h;
+  font-weight: 500;
+}
+.u-font-tiempos-h-medium {
+  @include font-tiempos-h-medium;
+}
+
+// ## Tiempos Text `@include font-tiempos`
+
+@mixin font-tiempos {
+  font-family: 'TiemposTextWeb', $georgia;
+}
+.u-font-tiempos {
+  @include font-tiempos;
+}
+
+// ## Tiempos Text Italic `@include font-tiempos-italic`
+
+@mixin font-tiempos-italic {
+  @include font-tiempos;
+  font-style: italic;
+}
+.u-font-tiempos-italic {
+  @include font-tiempos-italic;
+}
+
+
+// Base Type Styles
+// ==============================================================
+
+// ## Type A `@include type-a`
+
+@mixin type-a {
+  @include font-post-book;
+  @include typeset(16, 1.5);
+}
+.u-type-a {
+  @include type-a;
+}
+
+// ## Type B `@include type-b`
+
+@mixin type-b {
+  @include font-post-bold;
+  @include typeset(11, 1.2);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+.u-type-b {
+  @include type-b;
+}
+
+// ## Type C `@include type-c`
+
+@mixin type-c {
+  @include font-tiempos;
+  @include typeset(16, 1.8);
+}
+.u-type-c {
+  @include type-c;
+}
+
+// ## Type D `@include type-d`
+
+@mixin type-d {
+  @include type-a;
+  @include font-post-bold;
+}
+.u-type-d {
+  @include type-d;
+}
+
+// ## Type E `@include type-e`
+
+@mixin type-e {
+  @include font-tiempos-h-medium;
+  @include typeset(24, 1.3);
+}
+.u-type-e {
+  @include type-e;
+}
+
+// ## Type F `@include type-f`
+
+@mixin type-f {
+  @include font-tiempos-h;
+  @include typeset(24, 1.3);
+
+  @include mq(medium) {
+    @include typeset(32);
+  }
+}
+.u-type-f {
+  @include type-f;
+}
+
+// ## Type G `@include type-g`
+
+@mixin type-g {
+  @include font-tiempos-h;
+  @include typeset(41, 1.1);
+}
+.u-type-g {
+  @include type-g;
+}
+
+// ## Type H `@include type-h`
+
+@mixin type-h {
+  @include font-tiempos-h;
+  @include typeset(41, 1.1);
+
+  @include mq(large) {
+    @include typeset(62, 1);
+  }
+}
+.u-type-h {
+  @include type-h;
+}
+
+// ## Type I `@include type-i`
+
+@mixin type-i {
+  @include font-post-medium;
+  @include typeset(14, 1.6);
+}
+.u-type-i {
+  @include type-i;
+}
+
+// ## Type J `@include type-j`
+
+@mixin type-j {
+  @include font-post-book;
+  @include typeset(14, 1.4);
+}
+.u-type-j {
+  @include type-j;
+}
+
+// ## Type K `@include type-k`
+
+@mixin type-k {
+  @include font-post-book;
+  @include typeset(12, 1.6);
+}
+.u-type-k {
+  @include type-k;
+}
+
+
+// One-Off Type Styles
+// ==============================================================
+
+// ## Type Home Intro `@include type-home-intro`
+
+@mixin type-home-intro {
+  @include font-tiempos-h;
+  @include typeset(28, 1.3);
+
+  @include mq(medium) {
+    @include typeset(38, 1.2);
+  }
+}
+.u-type-home-intro {
+  @include type-home-intro;
+}
+
+// ## Type Statistic `@include type-statistic`
+
+@mixin type-statistic {
+  @include font-post-medium;
+  @include typeset(26, 1.2);
+  letter-spacing: -0.04rem;
+}
+.u-type-statistic {
+  @include type-statistic;
+}
+
+// ## Type quote `@include type-quote`
+
+@mixin type-quote {
+  @include font-tiempos-h-medium;
+  @include typeset(22, 1.3);
+}
+.u-type-statistic {
+  @include type-quote;
+}
+
+// ## Type Small Caption `@include type-small-caption`
+
+@mixin type-small-caption {
+  @include font-post-bold;
+  @include typeset(10, 1.2);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+.u-type-statistic {
+  @include type-small-caption;
+}
+
+
+// Base Typography
+// ==============================================================
+
+// Adjust the base font-size so that 1.4rem equals 14px
+
+html {
+  font-size: 62.5%;
+}
+
+// Set the default style for body copy
+
+body {
+  @include type-a;
+  @include type-smoothing-aa;
+  color: $dark-navy;
+}
+
+
+// Text Selection
+// ==============================================================
+
+::-moz-selection { background: $blue; color: $white; text-shadow: none; }
+::selection { background: $blue; color: $white; text-shadow: none; }

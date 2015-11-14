@@ -1,0 +1,89 @@
+/* ==============================================================
+   Color
+   ============================================================== */
+
+
+// Primary
+
+$black:                  #222;                    // Dark Black
+$white:                  #ecf0f1;                    // White
+$blue:                   #74ccdb;                 // Light Blue
+$red:                    #b70021;                 // Demmick Red
+$navy:                   #34495e;                 // Navy
+$dark-navy:              #7f8c8d;                 // Dark Navy
+$soft-blue:              #2980b9;                 // Desaturated blue, used for map bg
+
+// Variants
+
+$rule-gray:              tint($navy, 80);         // Gray used for light rules
+$light-navy:             tint($navy, 3);          // A weird, light navy used ocassionally
+$light-gray:             tint($dark-navy, 97);    // Gray used for light backgrounds
+
+
+//---------------------------------------------------------------
+// Color Classes
+//---------------------------------------------------------------
+
+//
+// Background
+//
+
+.u-color-bg-white {
+  background-color: $white;
+}
+
+.u-color-bg-black {
+  background-color: $black;
+}
+
+.u-color-bg-blue {
+  background-color: $blue;
+}
+
+.u-color-bg-red {
+  background-color: $red;
+}
+
+.u-color-bg-navy {
+  background-color: $navy;
+}
+
+.u-color-bg-dark-navy {
+  background-color: $dark-navy;
+}
+
+.u-color-bg-light-navy {
+  background-color: $light-navy;
+}
+
+.u-color-bg-light-gray {
+  background-color: $light-gray;
+}
+
+//
+// Type
+//
+
+.u-color-type-white {
+  color: $white;
+}
+
+.u-color-type-black {
+  color: $black;
+}
+
+.u-color-type-blue {
+  color: $blue;
+}
+
+.u-color-type-red {
+  color: $red;
+}
+
+.u-color-type-navy {
+  color: $navy;
+}
+
+.u-color-type-dark-navy {
+  color: $dark-navy;
+}

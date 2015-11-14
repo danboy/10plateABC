@@ -1,0 +1,104 @@
+var ABC = ABC || {};
+
+ABC.track = function(id){
+ this.id = id || 'anon';
+};
+{{host}}
+ABC.track.prototype = {
+  fire: function(data){
+    var goal = (document.location.href.indexOf(data.goal)!==-1) ? data.name : 'false';
+    $.ajax('{{host}}/api/metrics/',{
+      type: 'POST'
+    , data: {name: data.name, data: data, group: '{{group}}', goal: goal, user: data.user, token: '{{token}}'}
+    , success: function(res){
+      return true;
+    }
+    });
+  }
+};
+
+ABC.test = function(templates,data,cb){
+  this.cb = cb || this.default;
+  this.data = data || {};
+  this.templates = templates || {};
+  this.buckets = JSON.parse(localStorage.getItem('buckets'));
+  this.tracker = new ABC.track('test');
+  var self = this;
+  $.ajax('{{host}}/api/tests/list/{{group}}?token={{token}}',{
+    data: {buckets: this.buckets}
+  , type: 'POST'
+  , success: function(data){
+     self.getTests(data);
+    }
+  });
+};
+
+ABC.test.prototype ={
+  getBucket: function(layer){
+   if(!this.buckets){
+     console.info('set buckets');
+     this.buckets = {};
+     this.buckets[layer] = this.randomize(999); 
+     localStorage.setItem('buckets',JSON.stringify(this.buckets));
+   }else if(!this.buckets[layer]){
+     console.info('set bucket for layer');
+     this.buckets[layer] = this.randomize(999); 
+     localStorage.setItem('buckets',JSON.stringify(this.buckets));
+   } 
+   return this.buckets[layer];
+  }
+, getUser: function(){
+   this.user = localStorage.getItem('user'); 
+   if(!this.user){
+     this.user = this.createUnique(); 
+     localStorage.setItem('user',this.user);
+   }
+   return this.user;
+  }
+, createUnique: function(e){
+    if (event === undefined) var event = window.event;
+    var time = new Date()
+      , p = parseInt
+      , utc = Date.UTC(time.getFullYear(),time.getMonth(),time.getDate(),time.getHours(),time.getMinutes(),time.getSeconds(),time.getMilliseconds())
+      , num = Math.floor(Math.random()*utc);
+
+    return num+']::['+utc;
+  }
+, inBucket: function(bucket,val){
+    b = bucket;
+    if ( val > parseInt(b[0]) && val < parseInt(b[1]) ){
+      return true;
+    }else{
+      return false;
+    }; 
+  }
+, randomize: function(max){
+   return Math.floor(Math.random()*max); 
+  }
+, startTest: function(test){
+    var user = this.getUser();
+    //this should probably be in the ajax call so we only return one template.
+    if(!localStorage.getItem(test.name))
+      localStorage.setItem(test.name,this.randomize(test.variants.length));
+    var variant = test.variants[localStorage.getItem(test.name)];
+    this.cb(test.name,variant);
+    this.tracker.fire({name: test.name, variant: variant, goal: test.goal, user: user});
+  }
+, assignVariant: function(test){
+    if(this.inBucket(test.buckets,this.getBucket(test.layer)))
+      this.startTest(test);
+  }
+, getTests: function(tests){
+    var self = this;
+    tests.forEach(function(test){
+      self.assignVariant(test);
+    });
+  }
+, default: function(name,variant){
+    this.templates[name] = Hogan.compile(variant.template);
+    var selector = $(this.data[name].selector);
+    if(selector.length)
+      selector.html(this.templates[name].render(this.data[name]))
+  }
+};
+

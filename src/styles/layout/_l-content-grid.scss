@@ -1,0 +1,429 @@
+
+/* ==============================================================
+   Layout - Content Grid
+   ============================================================== */
+
+
+//---------------------------------------------------------------
+// Base
+//---------------------------------------------------------------
+
+
+/*
+Layout - Content Grid
+
+Common grids for content pages.
+
+// Grids
+
+.l-content-grid--5-5               - 2 columns, each 5 units (with a space in between)
+.l-content-grid--4-7               - 2 columns, one 4 units and one 7 units (with a space in between)
+.l-content-grid--4-4-4             - 3 columns, each 4 units (with gutter in between)
+.l-content-grid--3-3-3-3           - 4 columns, each 3 units wide with gutter in between.
+.l-content-grid--9-1               - 2 columns, one 9 units and one 1 units (with 2 columns in between)
+.l-content-grid--9-2               - 2 columns, one 9 units and one 2 units (with gutter in between)
+.l-content-grid--9-3               - 2 columns, one 9 units and one 3 units (with gutter in between)
+.l-content-grid--8-0               - 1 column, 8 units
+.l-content-grid--8-3               - 2 columns, one 8 units and one 3 units (with a space in between)
+.l-content-grid--7-4               - 2 columns, one 7 units and one 4 units (with a space in between)
+.l-content-grid--6-5               - 2 columns, one 6 units and one 5 units (with a space in between)
+.l-content-grid--10-0              - 1 column, 10 units
+.l-content-grid--6-6               - 2 columns, each 6 units (with gutter in between)
+.l-content-grid--6-6--condensed    - Same as above, but with reduced vertical spacing between columns
+.l-content-grid--4-4               - 2 columns, each 4 units (with a space in between)
+
+// Types of Colums
+
+.l-content-grid--flex              - Any number of equal width columns with flexbox.
+.l-content-grid--bleed             - Column bleeds outside of grid margins to left and right
+
+// Types of content
+// These should only be used to set custom spacing for combinations of these items, and will typically be set in _l-content.scss
+
+.l-content-grid--introduction      - Grid for an introduction block
+.l-content-grid--text              - Grid for an text block
+*/
+
+.l-content-grid {
+  @include container;
+}
+
+//
+// Sub-Modules
+//
+
+.l-content-grid__col {
+
+  & + & {
+    @include spacing(s, $until: medium);
+  }
+  
+  //
+  // Default Spacing
+  //
+  
+  > * + * {
+    @include spacing(l);
+  }
+  
+
+  //
+  // Custom Spacing
+  //
+  
+  > .heading + * {
+    @include spacing(s);
+  }
+
+  > .heading--m + * {
+    @include spacing(l);
+  }
+
+  > * + .link {
+    @include spacing(m);
+  }
+
+  > .resource + .resource {
+    @include spacing(xs);
+  }
+
+  > .video {
+    margin-top: 1.0rem; 
+    margin-bottom: 1.0rem; 
+  }
+
+  > .footer-links + .footer-links {
+    @include spacing(s);
+  }
+
+  .l-footer-policy-links {
+    @include spacing(s);
+  }
+
+  // Adjust optical spacing above first part of intro
+  .intro:not(.intro--s) {
+    margin-top: -1.1rem;
+  }
+
+}
+
+
+//---------------------------------------------------------------
+// Modifiers
+//---------------------------------------------------------------
+
+
+/* 5-5
+   ============================================================== */
+
+.l-content-grid--5-5 {
+
+  .l-content-grid__col {
+
+    @include mq(large) {
+      @include span(5 of 12);
+
+      &:nth-child(2) {
+        @include push(1 of 12);
+      }
+    }
+  }
+}
+
+/* 4-7
+   ============================================================== */
+
+.l-content-grid--4-7 {
+
+  .l-content-grid__col {
+
+    @include mq(large) {
+      @include span(4 of 12);
+
+      &:nth-child(2) {
+         @include span(7 of 12);
+         @include last;
+      }
+    }
+  }
+}
+
+/* 4-4-4
+   ============================================================== */
+
+.l-content-grid--4-4-4 {
+
+  > .l-content-grid__col {
+    
+    @include mq(large) {
+
+      & {
+        @include gallery(4 of 12);
+      }
+
+      &:nth-child(1n + 4) {
+        @include spacing(m);
+      }
+    }
+  }
+}
+
+/* 3-3-3-3
+   ============================================================== */
+
+.l-content-grid--3-3-3-3 {
+
+  .l-content-grid__col {
+
+    @include mq(medium) {
+      @include gallery(3 of 12);
+
+      &:nth-child(3n + 1) {
+        
+      }
+
+      &:nth-child(1n + 5) {
+        @include spacing(m);
+      }
+    }
+  }
+}
+
+/* 9-1
+   ============================================================== */
+
+.l-content-grid--9-1 {
+
+  > .l-content-grid__col {
+
+    @include mq(large) {
+      @include span(9 of 12 first);
+    }
+  }
+}
+
+/* 9-2
+   ============================================================== */
+
+.l-content-grid--9-2 {
+
+  > .l-content-grid__col {
+    
+    &:nth-child(1) {
+
+      @include mq(large) {
+        @include span(9 of 12 first);
+      }
+    }
+    
+    &:nth-child(2) {
+
+      @include mq(large) {
+        @include span(2 of 12 last);
+      }
+    }
+  }
+}
+
+/* 9-3
+   ============================================================== */
+
+.l-content-grid--9-3 {
+
+  > .l-content-grid__col {
+    
+    &:nth-child(1) {
+
+      @include mq(large) {
+        @include span(9 of 12 first);
+      }
+    }
+    
+    &:nth-child(2) {
+
+      @include mq(large) {
+        @include span(3 of 12 last);
+      }
+    }
+  }
+}
+
+/* 6-5
+   ============================================================== */
+
+.l-content-grid--6-5 {
+
+  > .l-content-grid__col {
+    
+    @include mq(large) {
+
+      &:nth-child(1) {
+        @include span(6 of 12 first);
+      }
+
+      &:nth-child(2) {
+        @include span(5 of 12 at 8);
+      }
+    }
+  }
+
+   > .l-content-grid__col + .l-content-grid__col {
+
+      @include mq($until: large) {
+        @include spacing(s);
+      }
+   }
+}
+
+/* 10-0
+   ============================================================== */
+
+.l-content-grid--10-0 {
+
+  > .l-content-grid__col {
+
+    &:nth-child(1n + 2) {
+      @include spacing(s);
+    }
+    
+    @include mq(large) {
+      @include span(10 of 12 first);
+      clear: left;
+    }
+  }
+}
+
+/* 6-6
+   ============================================================== */
+
+.l-content-grid--6-6 {
+
+  > .l-content-grid__col {
+    
+    @include mq(medium) {
+      @include gallery(6 of 12);
+
+      &:nth-child(1n + 3) {
+        @include spacing(m);
+      }
+    }
+  }
+}
+
+.l-content-grid--6-6--condensed {
+
+  > .l-content-grid__col {
+    
+    @include mq(medium) {
+
+      &:nth-child(1n + 3) {
+        @include spacing(s);
+      }
+    }
+  }
+}
+
+/* 4-4
+   ============================================================== */
+
+.l-content-grid--4-4 {
+
+  .l-content-grid__col {
+
+    @include mq(medium) {
+      @include span(5 of 12);
+
+      &:nth-child(2n + 2) {
+        @include push(1 of 12);
+      }
+
+      &:nth-child(2n + 1) {
+        clear: both;
+      }
+
+      &:nth-child(1n + 3) {
+        @include spacing(m);
+      }
+    }
+
+    @include mq(large) {
+      @include span(4 of 12);
+    }
+  }
+}
+
+/* 8-0
+   ============================================================== */
+
+.l-content-grid--8-0 {
+
+  .l-content-grid__col {
+
+    @include mq(large) {
+      @include span(8 of 12 first);
+    }
+  }
+}
+
+/* 8-3
+   ============================================================== */
+
+.l-content-grid--8-3 {
+
+  .l-content-grid__col {
+
+    @include mq(medium) {
+
+      &:nth-child(1) {
+        @include span(8 of 12 first);
+      }
+
+      &:nth-child(2) {
+        @include span(3 of 12 at 10 last);
+      }
+    }
+  }
+}
+
+/* 8-4
+   ============================================================== */
+
+.l-content-grid--8-3 {
+
+  .l-content-grid__col {
+
+    @include mq(medium) {
+
+      &:nth-child(1) {
+        @include span(7 of 12 first);
+      }
+
+      &:nth-child(2) {
+        @include span(4 of 12 at 9 last);
+      }
+    }
+  }
+}
+
+/* Flex
+   ============================================================== */
+
+.l-content-grid--flex {
+  display: flex;
+  flex-direction: row;
+  
+  .l-content-grid__col {
+    flex: 1;
+  }
+}
+
+/* Bleed
+   ============================================================== */
+
+.l-content-grid--bleed {
+
+  .l-content-grid__col {
+    @include bleed-x(1 of 12);
+    padding: 0;
+  }
+}

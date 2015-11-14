@@ -1,0 +1,53 @@
+
+/* ==============================================================
+   Layout - Home Intro Block
+   ============================================================== */
+
+
+//---------------------------------------------------------------
+// Base
+//---------------------------------------------------------------
+
+
+/*
+Layout - Home Intro Block
+
+Contents of the home intro for one of the various blocks
+
+*/
+
+.l-home-intro-block {
+  
+}
+
+//
+// Sub-Modules
+//
+
+.l-home-intro-block__header {
+
+}
+  
+.l-home-intro-block__contents {
+  @include spacing(l);
+
+  .lined-list {
+    @include spacing(l);
+    @include spacing(s, margin-bottom);
+  }
+}
+
+.l-home-intro-block__col {
+  @include mq($until: large) {
+    margin-top: 2rem;
+  }
+
+  @include mq(large) {
+    width: 47%;
+    float: left;
+
+    & + & {
+      margin-left: 6%;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+
+/* ==============================================================
+   Layout - Container
+   ============================================================== */
+
+
+//---------------------------------------------------------------
+// Base
+//---------------------------------------------------------------
+
+
+/*
+Layout - Container
+
+The wrapper for the entire site
+
+*/
+
+.l-container {
+  @include container();
+  transition: transform 0.7s $ease-out-quint;
+  padding-left: $side-rule-width;
+}
+
+
+//---------------------------------------------------------------
+// States
+//---------------------------------------------------------------
+
+.l-container.is-slid {
+  transform: translateX(76%);
+}
+
+
+//---------------------------------------------------------------
+// Page-Specific Customizations
+//---------------------------------------------------------------
+
+.l-container--news-entry {
+
+  .l-extra-sidebar-content {
+
+    @include mq($until: large) {
+      display: none;
+    }
+  }
+}
+
+.l-container--footer-hidden {
+
+  .footer {
+    display: none;
+  }
+}

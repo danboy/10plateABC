@@ -1,0 +1,99 @@
+/* ==============================================================
+   Spacing
+   ============================================================== */
+
+
+//---------------------------------------------------------------
+// Vertical Spacing
+//---------------------------------------------------------------
+
+/*
+Commonly used, responsive vertical spacing.
+*/
+
+$spacing: (
+  none: 0,
+  xs:   2.5rem,
+  s:    4rem,
+  m:    5rem,
+  l:    6rem,
+  xl:   7rem
+);
+
+// Returns the value of a spacing size, useful for getting common spacing values without the mixin
+
+@function spacing($size: s) {
+  @if map-has-key($spacing, $size){
+    @return map-get($spacing, $size);
+  }
+}
+
+// Applies a common spacing size to a property. Whenever possible, vertical spacing should be applied to `margin-top`, which this defaults to.
+
+@mixin spacing($size: s, $property: margin-top, $negative: false, $until: false) {
+  @if map-has-key($spacing, $size){
+    $spacingAmount: spacing($size);
+    
+    @if $negative {
+      $spacingAmount: $spacingAmount * -1;
+    }
+
+    @if not($until) {
+      #{$property}: $spacingAmount;
+    }
+
+    @if $until {
+      @include mq($until: $until) {
+        #{$property}: $spacingAmount;
+      }
+    }
+
+    // Tweak larger spacing sizes on small devices
+
+    @if $size == 'l' {
+
+      @include mq($until: medium) {
+        #{$property}: spacing(s);
+      }
+    }
+
+    @if $size == 'xl' {
+
+      @include mq($until: medium) {
+        #{$property}: spacing(m);
+      }
+    }
+  }
+}
+
+
+//---------------------------------------------------------------
+// Horizontal Padding
+//---------------------------------------------------------------
+
+/*
+Commonly used, responsive horizontal padding.
+*/
+
+$horz-spacing: (
+  s:   7.34vw,
+  l:   3vw
+);
+
+// Returns the value of a spacing size, useful for getting common spacing values without the mixin
+
+@function horz-spacing($size: s) {
+  @if map-has-key($horz-spacing, $size){
+    @return map-get($horz-spacing, $size);
+  }
+}
+
+@mixin horz-spacing {
+  padding-left: horz-spacing();
+  padding-right: horz-spacing();
+
+  @include mq(large) {
+    padding-left: horz-spacing(l);
+    padding-right: horz-spacing(l);
+  }
+}

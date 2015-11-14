@@ -1,0 +1,32 @@
+
+/* ==============================================================
+   Layout - Block
+   ============================================================== */
+
+
+//---------------------------------------------------------------
+// Base
+//---------------------------------------------------------------
+
+
+/*
+Layout - Block
+
+A single block unit, used with .l-block-row (see /src/styles/layout/_l-block-row.scss)
+
+*/
+
+.l-block {
+  padding: 8%;
+  background-size: cover;
+  text-decoration: none;
+  position: relative;
+
+  @include mq($until: large) {
+    display: block;
+  }
+
+  @include mq(large) {
+    padding: span(1) span(1) * 0.8;
+  }
+}

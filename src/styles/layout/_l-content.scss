@@ -1,0 +1,126 @@
+
+/* ==============================================================
+   Layout - Content
+   ============================================================== */
+
+
+//---------------------------------------------------------------
+// Base
+//---------------------------------------------------------------
+
+
+/*
+Layout - Content
+
+Main content layout for the site.
+
+*/
+
+.l-content {
+  @include container();
+  @include spacing(s, padding-top);
+  @include spacing(xl, padding-bottom);
+
+  //
+  // Base Spacing
+  //
+
+  > * + * {
+    @include spacing(l);
+  }
+
+  // Adjustments
+
+  .image-header,
+  .l-image-banner {
+    @include bleed-x(1 of 12);
+  }
+
+  .image-header:first-child {
+    margin-top: spacing() * -1;
+  }
+
+  .heading + .l-matrix-list {
+    @include spacing();
+  }
+
+  .l-image-banner:last-child {
+    @include spacing(xl, margin-bottom, $negative: true);
+  }
+
+  > .l-section-header + .expandable-list {
+    @include spacing(s);
+  }
+
+  > .heading--xs + * {
+    @include spacing(s);
+  }
+
+  > .heading--xs + .heading--l {
+    margin-top: 0.7rem;
+  }
+
+  > .u-no-spacing + * {
+    margin-top: 0;
+  }
+
+  .l-content-grid--introduction + .l-content-grid--text {
+    @include spacing(s);
+  }
+
+  .l-content-grid--property-rendering {
+    @include spacing(xs);
+  }
+
+  * + .breadcrumb--bordered {
+    @include spacing();
+  }
+
+  .u-no-margin {
+    @include spacing(none);
+  }
+}
+
+//---------------------------------------------------------------
+// Careers
+//---------------------------------------------------------------
+
+/* Benefits
+   ============================================================== */
+
+.l-content--careers-benefits {
+
+  @include mq(large) {
+    
+    .l-section-header {
+      width: span(10 of 12);
+    }
+  }
+}
+
+
+//---------------------------------------------------------------
+// Investment Management
+//---------------------------------------------------------------
+
+/* Benefits
+   ============================================================== */
+
+.l-content--investment-management {
+
+  .l-section-header + .feature-table {
+    margin-top: 0;
+    @include spacing(s, $until: medium);
+  }
+}
+
+/* Contact
+   ============================================================== */
+
+.l-content--contact {
+  padding: 0;
+  
+  .l-contact {
+    @include bleed-x(1 of 12);
+  }
+}
