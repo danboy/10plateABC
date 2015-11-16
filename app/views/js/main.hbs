@@ -36,12 +36,10 @@ ABC.test = function(templates,data,cb){
 ABC.test.prototype ={
   getBucket: function(layer){
    if(!this.buckets){
-     console.info('set buckets');
      this.buckets = {};
      this.buckets[layer] = this.randomize(999); 
      localStorage.setItem('buckets',JSON.stringify(this.buckets));
    }else if(!this.buckets[layer]){
-     console.info('set bucket for layer');
      this.buckets[layer] = this.randomize(999); 
      localStorage.setItem('buckets',JSON.stringify(this.buckets));
    } 

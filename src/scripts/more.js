@@ -1,16 +1,15 @@
-// CommonJS module installed via npm
 import _ from 'lodash';
-
-// Installed via Bower
 import $ from 'jquery';
 
-// Local ES2015 module
-import ExampleModule from './modules/Es2015ExampleModule';
-
 //---------------------------------------------------------------
-// main.js
+// more.js
 //---------------------------------------------------------------
 
+/*
+This file imports some of the same dependencies as main.js, but
+instead of being bundled by both, they'll be split into a third
+bundle.common.js file.
+*/
 // Testing npm module
 _.each([1, 2, 3], function(item) {
   console.log(item);
@@ -19,6 +18,4 @@ _.each([1, 2, 3], function(item) {
 // Testing Bower Module
 console.log($('body')[0]);
 
-// Testing ES2015 module
-var x = new ExampleModule();
-x.run();
+console.log('An additional bundle of scripts.');
